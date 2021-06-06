@@ -20,3 +20,15 @@ let isEven = function(n) {
 };
 
 console.log(getValidInput('Enter an even number:', isEven));
+
+let isValidPassword = function(password) {
+
+   // Passwords should have at least 8 characters
+   if (password.length < 8) {
+      return false;
+   }
+
+   return true;
+};
+
+console.log(getValidInput('Create a password:', isValidPassword));
