@@ -56,7 +56,26 @@ let isInputVowel = function(inputV){
 
 console.log(getValidInput('Enter a word beinging with a vowel: ', isInputVowel));
 
+// this is a simple file logger: reach chapter 11.4.2.1 on it
 
+// let fileLogger = function(msg) {
+
+//    // Put the message in a file
+
+// }
+
+
+
+
+
+// function logError(msg, logger) {
+//    let errorMsg = 'ERROR: ' + msg;
+//    logger(errorMsg);
+// }
+
+// logError('Something broke!', fileLogger);
+
+// this i a more complex logger: 
 
 let fileLogger = function(msg) {
 
@@ -64,9 +83,79 @@ let fileLogger = function(msg) {
 
 }
 
-function logError(msg, logger) {
-   let errorMsg = 'ERROR: ' + msg;
-   logger(errorMsg);
+let consoleLogger = function(msg) {
+
+   console.log(msg);
+
 }
 
-logError('Something broke!', fileLogger);
+function logError(msg, loggers) {
+
+   let errorMsg = 'ERROR: ' + msg;
+
+   for (let i = 0; i < loggers.length; i++) {
+      loggers[i](errorMsg);
+   }
+
+}
+
+logError('Something broke!', [fileLogger, consoleLogger]);
+
+
+let arr = ['L', 'C', '1', '0', '1'];
+let newString = '';
+
+for (i = 0; i < arr.length; i++){
+   newString = newString + arr[i];
+}
+
+console.log(newString);
+console.log(arr);
+
+while (arr.length > 0){
+   newString += arr[0];
+   arr.shift();
+}
+console.log(newString);
+console.log(arr);
+
+
+
+
+function removeI(arr) {
+    if (arr.indexOf('i')===-1){ // !arr.includes('i') works as the basecase
+      return arr;
+    } else {
+      arr.splice(arr.indexOf('i'),1);
+      return removeI(arr);
+    }
+};
+
+let arrayToChange = ['One', 'i', 'c', 'X', 'i', 'i', 54];
+
+console.log(removeI(arrayToChange));
+
+//The following concept check assumes that only positive integers are passed to the function.
+
+function factorial(integer){
+  while (checkIfNumber(integer) === false){
+  if (integer === 1){
+    return integer;
+  } else {
+    return integer*(factorial(integer-1));
+  }
+}
+}
+
+
+function checkIfNumber(input){
+  if(typeof(input) == "string" || input !== Math.floor(input) || input < 0){
+    console.log(`Please enter a whole integer`);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+console.log(factorial(3));
